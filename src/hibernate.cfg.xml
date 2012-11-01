@@ -13,6 +13,6 @@
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">create-drop</property>
         <mapping class="org/nikolay/books/dpl/entity/AdminEntity"/>
-        <mapping class="com/vaannila/student/Address.hbm.xml"/>
+        <mapping class="org/nikolay/books/dpl/entity/BookEntity"/>
     </session-factory>
 </hibernate-configuration>

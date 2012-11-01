@@ -1,16 +1,42 @@
 package org.nikolay.books.dpl.entity;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import org.nikolay.books.api.dpl.entity.Sale;
 import org.nikolay.books.api.dpl.entity.User;
 
+@Entity
+@Table(name = "admin")
 public class SaleEntity implements Sale {
 
+	@Id
+	@GeneratedValue(generator = "generator")
+	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
+	
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user", targetEntity = UserEntity.class, cascade = CascadeType.ALL)
 	private User user;
+	
+	@Column(name = "address", nullable = true)
 	private String address;
+	
+	@Column(name = "country", nullable = true)
 	private String country;
+	
+	@Column(name = "city", nullable = true)
 	private String city;
+	
+	@Column(name = "postcode", nullable = true)
 	private Integer postcode;
+	
+	@Column(name = "role", nullable = true)
 	private String role;
 
 	/**

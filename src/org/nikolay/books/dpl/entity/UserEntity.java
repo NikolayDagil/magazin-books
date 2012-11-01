@@ -1,18 +1,49 @@
 package org.nikolay.books.dpl.entity;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.nikolay.books.api.dpl.entity.User;
 
-public class UserEntity implements User {
+@Entity
+@Table(name = "user")
+public class UserEntity implements User, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(generator = "generator")
+	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
+	
+	@Column(name = "firstName", nullable = true)
 	private String firstName;
+	
+	@Column(name = "lastName", nullable = true)
 	private String lastName;
+	
+	@Column(name = "username", nullable = true)
 	private String username;
+	
+	@Column(name = "email", nullable = true)
 	private String email;
+	
+	@Column(name = "mobile", nullable = true)
 	private Long mobile;
+	
+	@Column(name = "isActive", nullable = true)
 	private Boolean isActive;
+	
+	@Column(name = "createDate", nullable = true)
 	private Date createDate;
 
 	/**

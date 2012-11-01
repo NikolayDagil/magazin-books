@@ -1,19 +1,55 @@
 package org.nikolay.books.dpl.entity;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.sql.Date;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import org.nikolay.books.api.dpl.entity.Book;
 
-public class BookEntity implements Book {
+@Entity
+@Table(name = "book")
+public class BookEntity implements Book, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(generator = "generator")
+	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
+
+	@Column(name = "title", nullable = true)
 	private String title;
+
+	@Column(name = "author", nullable = true)
 	private String author;
+
+	@Column(name = "numberPage", nullable = true)
 	private Integer numberPage;
+
+	@Column(name = "imprintDate", nullable = true)
 	private Date imprintDate;
+
+	@Column(name = "price", nullable = true)
 	private Integer price;
+
+	@Column(name = "rating", nullable = true)
 	private Integer rating;
+
+	@Column(name = "discounts", nullable = true)
 	private Integer discounts;
+
+	@Column(name = "status", nullable = true)
 	private Boolean status;
 
 	/**
@@ -198,6 +234,12 @@ public class BookEntity implements Book {
 	@Override
 	public void setStatus(Boolean status) {
 		this.status = status;
+	}
+
+	@Override
+	public void setImprintDate(java.util.Date imprintDate) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

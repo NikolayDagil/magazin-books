@@ -1,18 +1,55 @@
 package org.nikolay.books.dpl.entity;
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import org.nikolay.books.api.dpl.entity.Customer;
 import org.nikolay.books.api.dpl.entity.User;
 
-public class CustomerEntity implements Customer {
+@Entity
+@Table(name = "customer")
+public class CustomerEntity implements Customer, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(generator = "generator")
+	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
+
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user", targetEntity = UserEntity.class, cascade = CascadeType.ALL)
 	private User user;
+
+	@Column(name = "title", nullable = true)
 	private String address;
+
+	@Column(name = "title", nullable = true)
 	private String country;
+
+	@Column(name = "title", nullable = true)
 	private String city;
+
+	@Column(name = "title", nullable = true)
 	private Integer postcode;
+
+	@Column(name = "title", nullable = true)
 	private Integer rating;
+
+	@Column(name = "title", nullable = true)
 	private Integer balance;
+
+	@Column(name = "title", nullable = true)
 	private Integer discounts;
 
 	/**
@@ -32,9 +69,9 @@ public class CustomerEntity implements Customer {
 	 * @param balance
 	 * @param discounts
 	 */
-	public CustomerEntity(Long id, User user, String address,
-			String country, String city, Integer postcode, Integer rating,
-			Integer balance, Integer discounts) {
+	public CustomerEntity(Long id, User user, String address, String country,
+			String city, Integer postcode, Integer rating, Integer balance,
+			Integer discounts) {
 		this.id = id;
 		this.user = user;
 		this.address = address;
