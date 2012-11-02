@@ -23,11 +23,11 @@ public class AdminEntity implements Admin, Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(generator = "generator")
+	@GeneratedValue
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
-	@OneToOne(mappedBy = "user", targetEntity = UserEntity.class, cascade = CascadeType.ALL)
+	@OneToOne(targetEntity = UserEntity.class, cascade = CascadeType.ALL)
 	private User user;
 
 	@Column(name = "role", nullable = true)

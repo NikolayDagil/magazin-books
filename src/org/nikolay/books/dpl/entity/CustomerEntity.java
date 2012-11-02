@@ -1,16 +1,19 @@
 package org.nikolay.books.dpl.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.nikolay.books.api.dpl.entity.Customer;
+import org.nikolay.books.api.dpl.entity.Transaction;
 import org.nikolay.books.api.dpl.entity.User;
 
 @Entity
@@ -23,11 +26,11 @@ public class CustomerEntity implements Customer, Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(generator = "generator")
+	@GeneratedValue
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
-	@OneToOne(mappedBy = "user", targetEntity = UserEntity.class, cascade = CascadeType.ALL)
+	@OneToOne(targetEntity = UserEntity.class, cascade = CascadeType.ALL)
 	private User user;
 
 	@Column(name = "address", nullable = true)
@@ -51,6 +54,9 @@ public class CustomerEntity implements Customer, Serializable {
 	@Column(name = "discounts", nullable = true)
 	private Integer discounts;
 
+	@OneToMany(mappedBy = "customer", targetEntity = TransactionEntity.class)
+	private List<Transaction> transactions;
+
 	/**
 	 * 
 	 */
@@ -67,10 +73,11 @@ public class CustomerEntity implements Customer, Serializable {
 	 * @param rating
 	 * @param balance
 	 * @param discounts
+	 * @param transactions
 	 */
 	public CustomerEntity(Long id, User user, String address, String country,
 			String city, Integer postcode, Integer rating, Integer balance,
-			Integer discounts) {
+			Integer discounts, List<Transaction> transactions) {
 		this.id = id;
 		this.user = user;
 		this.address = address;
@@ -80,6 +87,7 @@ public class CustomerEntity implements Customer, Serializable {
 		this.rating = rating;
 		this.balance = balance;
 		this.discounts = discounts;
+		this.transactions = transactions;
 	}
 
 	/**
@@ -233,6 +241,23 @@ public class CustomerEntity implements Customer, Serializable {
 	@Override
 	public void setDiscounts(Integer discounts) {
 		this.discounts = discounts;
+	}
+
+	/**
+	 * @return the transactions
+	 */
+	@Override
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+
+	/**
+	 * @param transactions
+	 *            the transactions to set
+	 */
+	@Override
+	public void setTransactions(List<Transaction> transactions) {
+		this.transactions = transactions;
 	}
 
 }

@@ -14,7 +14,7 @@ import org.nikolay.books.api.dpl.entity.Sale;
 import org.nikolay.books.api.dpl.entity.User;
 
 @Entity
-@Table(name = "admin")
+@Table(name = "sale")
 public class SaleEntity implements Sale, Serializable {
 
 	/**
@@ -23,11 +23,11 @@ public class SaleEntity implements Sale, Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(generator = "generator")
+	@GeneratedValue
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 	
-	@OneToOne(mappedBy = "user", targetEntity = UserEntity.class, cascade = CascadeType.ALL)
+	@OneToOne(targetEntity = UserEntity.class, cascade = CascadeType.ALL)
 	private User user;
 	
 	@Column(name = "address", nullable = true)

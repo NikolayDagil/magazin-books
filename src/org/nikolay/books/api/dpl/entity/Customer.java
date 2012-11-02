@@ -1,5 +1,7 @@
 package org.nikolay.books.api.dpl.entity;
 
+import java.util.List;
+
 
 public interface Customer {
 
@@ -101,5 +103,16 @@ public interface Customer {
 	 *            the discounts to set
 	 */
 	public void setDiscounts(Integer discounts);
+
+	/**
+	 * @return the transactions
+	 */
+	public List<Transaction> getTransactions();
+
+	/**
+	 * @param transactions
+	 *            the transactions to set
+	 */
+	public void setTransactions(List<Transaction> transactions);
 
 }

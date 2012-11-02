@@ -7,7 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.nikolay.books.api.dpl.entity.Book;
@@ -15,7 +16,7 @@ import org.nikolay.books.api.dpl.entity.Customer;
 import org.nikolay.books.api.dpl.entity.Transaction;
 
 @Entity
-@Table(name = "admin")
+@Table(name = "transaction")
 public class TransactionEntity implements Transaction, Serializable {
 
 	/**
@@ -24,15 +25,17 @@ public class TransactionEntity implements Transaction, Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(generator = "generator")
+	@GeneratedValue
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
-	@OneToOne(mappedBy = "book", targetEntity = BookEntity.class, cascade = CascadeType.ALL)
-	private Book book;
-
-	@OneToOne(mappedBy = "customer", targetEntity = CustomerEntity.class, cascade = CascadeType.ALL)
+	@ManyToOne(targetEntity = CustomerEntity.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "customer_fk")
 	private Customer customer;
+
+	@ManyToOne(targetEntity = BookEntity.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "book_fk")
+	private Book book;
 
 	/**
 	 * 
