@@ -1,15 +1,12 @@
 package org.nikolay.books.dpl.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.nikolay.books.api.dpl.entity.Book;
@@ -234,12 +231,6 @@ public class BookEntity implements Book, Serializable {
 	@Override
 	public void setStatus(Boolean status) {
 		this.status = status;
-	}
-
-	@Override
-	public void setImprintDate(java.util.Date imprintDate) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

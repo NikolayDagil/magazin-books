@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -29,10 +28,10 @@ public class TransactionEntity implements Transaction, Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "book", targetEntity = BookEntity.class, cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "book", targetEntity = BookEntity.class, cascade = CascadeType.ALL)
 	private Book book;
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "customer", targetEntity = CustomerEntity.class, cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "customer", targetEntity = CustomerEntity.class, cascade = CascadeType.ALL)
 	private Customer customer;
 
 	/**

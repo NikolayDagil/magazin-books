@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -28,28 +27,28 @@ public class CustomerEntity implements Customer, Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user", targetEntity = UserEntity.class, cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "user", targetEntity = UserEntity.class, cascade = CascadeType.ALL)
 	private User user;
 
-	@Column(name = "title", nullable = true)
+	@Column(name = "address", nullable = true)
 	private String address;
 
-	@Column(name = "title", nullable = true)
+	@Column(name = "country", nullable = true)
 	private String country;
 
-	@Column(name = "title", nullable = true)
+	@Column(name = "city", nullable = true)
 	private String city;
 
-	@Column(name = "title", nullable = true)
+	@Column(name = "postcode", nullable = true)
 	private Integer postcode;
 
-	@Column(name = "title", nullable = true)
+	@Column(name = "rating", nullable = true)
 	private Integer rating;
 
-	@Column(name = "title", nullable = true)
+	@Column(name = "balance", nullable = true)
 	private Integer balance;
 
-	@Column(name = "title", nullable = true)
+	@Column(name = "discounts", nullable = true)
 	private Integer discounts;
 
 	/**

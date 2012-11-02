@@ -2,6 +2,7 @@ package org.nikolay.books.api.dpl.entity;
 
 import java.util.Date;
 
+
 public interface Book {
 
 	/**

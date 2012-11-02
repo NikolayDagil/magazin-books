@@ -25,13 +25,13 @@ public class UserEntity implements User, Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 	
-	@Column(name = "firstName", nullable = true)
+	@Column(name = "firstName", nullable = false)
 	private String firstName;
 	
-	@Column(name = "lastName", nullable = true)
+	@Column(name = "lastName", nullable = false)
 	private String lastName;
 	
-	@Column(name = "username", nullable = true)
+	@Column(name = "username", nullable = false)
 	private String username;
 	
 	@Column(name = "email", nullable = true)
@@ -40,7 +40,7 @@ public class UserEntity implements User, Serializable {
 	@Column(name = "mobile", nullable = true)
 	private Long mobile;
 	
-	@Column(name = "isActive", nullable = true)
+	@Column(name = "isActive", nullable = false)
 	private Boolean isActive;
 	
 	@Column(name = "createDate", nullable = true)

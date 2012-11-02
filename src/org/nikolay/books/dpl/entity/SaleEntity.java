@@ -1,9 +1,10 @@
 package org.nikolay.books.dpl.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -14,14 +15,19 @@ import org.nikolay.books.api.dpl.entity.User;
 
 @Entity
 @Table(name = "admin")
-public class SaleEntity implements Sale {
+public class SaleEntity implements Sale, Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(generator = "generator")
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 	
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user", targetEntity = UserEntity.class, cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "user", targetEntity = UserEntity.class, cascade = CascadeType.ALL)
 	private User user;
 	
 	@Column(name = "address", nullable = true)
