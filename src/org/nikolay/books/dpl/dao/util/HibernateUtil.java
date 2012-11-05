@@ -1,8 +1,15 @@
-package org.nikolay.books.test.dpl.util;
+/**
+ * 
+ */
+package org.nikolay.books.dpl.dao.util;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
+/**
+ * @author Nikolay Dagil
+ * 
+ */
 public class HibernateUtil {
 
 	private static final SessionFactory sessionFactory;
