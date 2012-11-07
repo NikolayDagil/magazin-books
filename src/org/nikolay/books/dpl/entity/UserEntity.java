@@ -19,30 +19,33 @@ public class UserEntity implements User, Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
-	
+
 	@Column(name = "firstName", nullable = false)
 	private String firstName;
-	
+
 	@Column(name = "lastName", nullable = false)
 	private String lastName;
-	
+
 	@Column(name = "username", nullable = false)
 	private String username;
-	
+
 	@Column(name = "email", nullable = true)
 	private String email;
-	
+
 	@Column(name = "mobile", nullable = true)
 	private Long mobile;
-	
+
 	@Column(name = "isActive", nullable = false)
 	private Boolean isActive;
-	
+
+	@Column(name = "password", nullable = true)
+	private Long password;
+
 	@Column(name = "createDate", nullable = true)
 	private Date createDate;
 
@@ -60,11 +63,12 @@ public class UserEntity implements User, Serializable {
 	 * @param email
 	 * @param mobile
 	 * @param isActive
+	 * @param password
 	 * @param createDate
 	 */
 	public UserEntity(Long id, String firstName, String lastName,
 			String username, String email, Long mobile, Boolean isActive,
-			Date createDate) {
+			Long password, Date createDate) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -72,6 +76,7 @@ public class UserEntity implements User, Serializable {
 		this.email = email;
 		this.mobile = mobile;
 		this.isActive = isActive;
+		this.password = password;
 		this.createDate = createDate;
 	}
 
@@ -195,6 +200,23 @@ public class UserEntity implements User, Serializable {
 	}
 
 	/**
+	 * @return the password
+	 */
+	@Override
+	public Long getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password
+	 *            the password to set
+	 */
+	@Override
+	public void setPassword(Long password) {
+		this.password = password;
+	}
+
+	/**
 	 * @return the createDate
 	 */
 	@Override
@@ -209,6 +231,13 @@ public class UserEntity implements User, Serializable {
 	@Override
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
+	}
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }

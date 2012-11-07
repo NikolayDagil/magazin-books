@@ -17,7 +17,7 @@
 		<mapping class="org.nikolay.books.dpl.entity.BookEntity" />
 		<mapping class="org.nikolay.books.dpl.entity.CustomerEntity" />
 		<mapping class="org.nikolay.books.dpl.entity.SaleEntity" />
-		<mapping class="org.nikolay.books.dpl.entity.TransactionEntity" />
+		<mapping class="org.nikolay.books.dpl.entity.OperationEntity" />
 		<mapping class="org.nikolay.books.dpl.entity.UserEntity" />
 	</session-factory>
 </hibernate-configuration>

@@ -2,7 +2,6 @@ package org.nikolay.books.api.dpl.entity;
 
 import java.util.List;
 
-
 public interface Customer {
 
 	/**
@@ -105,14 +104,14 @@ public interface Customer {
 	public void setDiscounts(Integer discounts);
 
 	/**
-	 * @return the transactions
+	 * @return the operations
 	 */
-	public List<Transaction> getTransactions();
+	public List<Operation> getOperations();
 
 	/**
-	 * @param transactions
-	 *            the transactions to set
+	 * @param operations
+	 *            the operations to set
 	 */
-	public void setTransactions(List<Transaction> transactions);
+	public void setOperations(List<Operation> operations);
 
 }

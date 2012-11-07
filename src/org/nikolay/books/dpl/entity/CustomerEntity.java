@@ -13,16 +13,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.nikolay.books.api.dpl.entity.Customer;
-import org.nikolay.books.api.dpl.entity.Transaction;
+import org.nikolay.books.api.dpl.entity.Operation;
 import org.nikolay.books.api.dpl.entity.User;
 
 @Entity
 @Table(name = "customer")
 public class CustomerEntity implements Customer, Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -54,8 +51,8 @@ public class CustomerEntity implements Customer, Serializable {
 	@Column(name = "discounts", nullable = true)
 	private Integer discounts;
 
-	@OneToMany(mappedBy = "customer", targetEntity = TransactionEntity.class)
-	private List<Transaction> transactions;
+	@OneToMany(mappedBy = "customer", targetEntity = OperationEntity.class)
+	private List<Operation> operations;
 
 	/**
 	 * 
@@ -73,11 +70,11 @@ public class CustomerEntity implements Customer, Serializable {
 	 * @param rating
 	 * @param balance
 	 * @param discounts
-	 * @param transactions
+	 * @param operations
 	 */
 	public CustomerEntity(Long id, User user, String address, String country,
 			String city, Integer postcode, Integer rating, Integer balance,
-			Integer discounts, List<Transaction> transactions) {
+			Integer discounts, List<Operation> operations) {
 		this.id = id;
 		this.user = user;
 		this.address = address;
@@ -87,7 +84,7 @@ public class CustomerEntity implements Customer, Serializable {
 		this.rating = rating;
 		this.balance = balance;
 		this.discounts = discounts;
-		this.transactions = transactions;
+		this.operations = operations;
 	}
 
 	/**
@@ -244,20 +241,20 @@ public class CustomerEntity implements Customer, Serializable {
 	}
 
 	/**
-	 * @return the transactions
+	 * @return the operations
 	 */
 	@Override
-	public List<Transaction> getTransactions() {
-		return transactions;
+	public List<Operation> getOperations() {
+		return operations;
 	}
 
 	/**
-	 * @param transactions
-	 *            the transactions to set
+	 * @param operations
+	 *            the operations to set
 	 */
 	@Override
-	public void setTransactions(List<Transaction> transactions) {
-		this.transactions = transactions;
+	public void setOperations(List<Operation> operations) {
+		this.operations = operations;
 	}
 
 }

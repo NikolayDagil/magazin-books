@@ -13,11 +13,11 @@ import javax.persistence.Table;
 
 import org.nikolay.books.api.dpl.entity.Book;
 import org.nikolay.books.api.dpl.entity.Customer;
-import org.nikolay.books.api.dpl.entity.Transaction;
+import org.nikolay.books.api.dpl.entity.Operation;
 
 @Entity
 @Table(name = "transaction")
-public class TransactionEntity implements Transaction, Serializable {
+public class OperationEntity implements Operation, Serializable {
 
 	/**
 	 * 
@@ -40,7 +40,7 @@ public class TransactionEntity implements Transaction, Serializable {
 	/**
 	 * 
 	 */
-	public TransactionEntity() {
+	public OperationEntity() {
 	}
 
 	/**
@@ -48,7 +48,7 @@ public class TransactionEntity implements Transaction, Serializable {
 	 * @param book
 	 * @param customer
 	 */
-	public TransactionEntity(Long id, Book book, Customer customer) {
+	public OperationEntity(Long id, Book book, Customer customer) {
 		this.id = id;
 		this.book = book;
 		this.customer = customer;

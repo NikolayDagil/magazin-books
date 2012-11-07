@@ -1,6 +1,6 @@
 package org.nikolay.books.api.dpl.entity;
 
-public interface Transaction {
+public interface Operation {
 
 	/**
 	 * @return the id

@@ -82,6 +82,17 @@ public interface User {
 	public void setIsActive(Boolean isActive);
 
 	/**
+	 * @return the password
+	 */
+	public Long getPassword();
+
+	/**
+	 * @param password
+	 *            the password to set
+	 */
+	public void setPassword(Long password);
+
+	/**
 	 * @return the createDate
 	 */
 	public Date getCreateDate();
